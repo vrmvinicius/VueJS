@@ -1,0 +1,38 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <p>Contador: {{contador}}</p>
+    <button v-on:click="somar($event, 5)">Somar 5</button>
+    <p v-on:mousemove="atualizarXY">
+        X:{{x}} Y:{{y}}
+        <span v-on:mousemove="naoAtualizarXY($event)">Não atualizar XY aqui!</span>
+    </p>
+    <a v-on:click="naoNavegar" href="http://www.google.com.br">Google</a>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            contador: 0,
+            x: 0,
+            y: 0
+        },
+        methods: {
+            somar(event, valor){
+                console.log(event)
+                return this.contador += valor
+            },
+            atualizarXY(event){
+                this.x = event.clientX
+                this.y = event.clientY
+            },
+            naoAtualizarXY(event){
+                event.stopPropagation()
+            },
+            naoNavegar(event){
+                event.preventDefault()
+            }
+        }
+    })
+</script>

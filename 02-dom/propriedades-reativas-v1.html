@@ -1,0 +1,21 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <p>{{titulo}}</p>
+    <p>One-way binding: <input type="text" v-bind:value="titulo"></p>
+    <p>Two-way binding: <input type="text" v-model="titulo"></p>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            titulo: 'Usando Vue JS!'
+        },
+        methods: {
+            saudacao: function(){
+                return 'Boa semana!'
+            }
+        }
+    })
+</script>
